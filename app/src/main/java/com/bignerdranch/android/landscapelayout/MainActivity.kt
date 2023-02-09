@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSquare() {
+        /*
         // launch the SquareActivity
         val showSquareIntent = Intent(this, SquareActivity::class.java)
 
@@ -67,6 +68,13 @@ class MainActivity : AppCompatActivity() {
         showSquareIntent.putExtra(EXTRA_SQUARE_SIZE, seekBar.progress)
         // startActivity(showSquareIntent) // starts the SquareActivity but there is no way to receive data back from SquareActivity
         squareResultLauncher.launch(showSquareIntent)
+         */
+
+        // kotlin scope function - preferred way - Every code related to intent is put with the block of apply scope
+        Intent(this, SquareActivity::class.java).apply {
+            putExtra(EXTRA_SQUARE_SIZE, seekBar.progress) // you can also do this.putExtra but is not required as there is no ambiguity with what this refers to here
+            squareResultLauncher.launch(this)
+        }
     }
     private fun handleSquareResult(result: ActivityResult) {
         // TODO display result to user

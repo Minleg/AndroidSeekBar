@@ -39,7 +39,8 @@ class SquareActivity : AppCompatActivity() {
     }
 
     private fun squareTapped(didTapSqaure: Boolean) {
-        // todo send a message to main activity
+        /*
+        // send a message to main activity
         // end square activity
         // Toast.makeText(this, "square tapped $didTapSqaure", Toast.LENGTH_SHORT).show()
         val resultIntent = Intent()
@@ -48,5 +49,12 @@ class SquareActivity : AppCompatActivity() {
         // it would be RESULT_CANCEL
         setResult(RESULT_OK, resultIntent) // RESULT_OK indicates that everything worked as intented and user tapped on somewhere
         finish() // finishing the SquareActivity and we return back to calling Activity which is the MainActivity
+         */
+
+        Intent().apply {
+            putExtra(EXTRA_TAPPED_INSIDE_SQUARE, didTapSqaure)
+            setResult(RESULT_OK,this)
+            finish()
+        }
     }
 }
